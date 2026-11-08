@@ -4,9 +4,11 @@ Built for LLVM 19.1 - Windows x64 <br> <br>
 We utilize a trick with how windows stores exception information, exception information is written in an 0x1000 range below the stack. So when we write to it, if an exception occurs, it overwrites our information <br>
 This has been done in denuvo for a while but only publicly documented by this legend: <br>
 [Connor Jay's Denuvo Blog](https://connorjaydunn.github.io/blog/posts/denuvo-analysis/) <br>
-Unlike denuvo though, we use it in our code, not in a VM. This means we don't have the downsides of slow VM execution, we only get the upsides of breaking VEHs.
+Unlike denuvo though, we use it in our code, not in a VM. This means we don't have the downsides of slow VM execution, we only get the upsides of breaking VEHs. <br>
+This will also break inline hooks that use any callbacks or downstream call any exception based code. It makes hooking and runtime attacking your program HELL! <br>
+This also is directly affected by APCs too. 
 
-## The Attack
+## The Methodology
 
 <img width="685" height="930" alt="image" src="https://github.com/user-attachments/assets/99eefd38-ccd2-4e13-9ed2-e08997e09280" />
 
