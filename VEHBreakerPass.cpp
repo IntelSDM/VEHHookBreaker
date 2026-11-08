@@ -29,7 +29,7 @@
 
 using namespace llvm;
 
-llvm::cl::opt<bool> VEHBreakerEnable("obfvehbreaker", llvm::cl::init(false), llvm::cl::desc("Master Toggle"));
+llvm::cl::opt<bool> VEHBreakerEnable("obfvehbreaker", llvm::cl::init(true), llvm::cl::desc("Master Toggle"));
 
 static std::mt19937_64 VehbRng((uint64_t)std::random_device{}() ^ (uint64_t)std::chrono::high_resolution_clock::now().time_since_epoch().count());
 
